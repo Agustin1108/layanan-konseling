@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konseling Online – Forum Genre Sinjai</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:    #0D7A6F;
+      --teal-lt: #12A899;
+      --teal-bg: #E6F5F4;
+      --gold:    #F5A623;
+      --gold-lt: #FFF3DC;
+      --dark:    #0F2A28;
+      --mid:     #2D5C58;
+      --gray:    #637370;
+      --light:   #F2FAF9;
+      --white:   #FFFFFF;
+      --err:     #D94F3D;
+      --radius:  14px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--teal) 100%);
+      padding: 48px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(245,166,35,.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 60% at 10% 80%, rgba(18,168,153,.25) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #b2f0eb;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .hero-badge span { width:6px; height:6px; background:var(--gold); border-radius:50%; animation: blink 1.4s ease infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 6vw, 52px);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .hero h1 em { font-style: italic; color: #7FEDE5; }
+    .hero p {
+      color: rgba(255,255,255,.75);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+    }
+    .chip {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,.8);
+      font-weight: 500;
+    }
+
+    /* ── WAVE ── */
+    .wave {
+      display: block;
+      margin-top: -2px;
+      background: var(--dark);
+    }
+    .wave svg { display: block; }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 680px;
+      margin: -48px auto 0;
+      padding: 0 16px 60px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(13,122,111,.10), 0 2px 8px rgba(0,0,0,.04);
+      overflow: hidden;
+    }
+    .card-header {
+      background: linear-gradient(90deg, var(--teal-bg) 0%, var(--gold-lt) 100%);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid rgba(13,122,111,.1);
+    }
+    .card-icon {
+      width: 44px; height: 44px;
+      background: var(--teal);
+      border-radius: 12px;
+      display: grid; place-items: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .card-header h2 { font-size: 17px; font-weight: 700; color: var(--dark); }
+    .card-header p  { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+    .card-body { padding: 28px; }
+
+    /* ── STEPS ── */
+    .steps {
+      display: flex;
+      gap: 0;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 17px; left: 17px; right: 17px;
+      height: 2px;
+      background: var(--teal-bg);
+      z-index: 0;
+    }
+    .step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-dot {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 2px solid var(--teal-bg);
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      color: var(--gray);
+      margin: 0 auto 6px;
+      transition: all .3s;
+    }
+    .step.active .step-dot  { background: var(--teal); border-color: var(--teal); color: #fff; box-shadow: 0 0 0 4px rgba(13,122,111,.15); }
+    .step.done .step-dot    { background: var(--teal-lt); border-color: var(--teal-lt); color: #fff; }
+    .step-label { font-size: 10px; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: .04em; }
+    .step.active .step-label { color: var(--teal); }
+
+    /* ── SECTIONS ── */
+    .section { display: none; }
+    .section.visible { display: block; animation: fadeUp .35s ease; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ── FORM ── */
+    .field { margin-bottom: 18px; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mid);
+      margin-bottom: 6px;
+    }
+    .field label span { color: var(--err); }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #D4E9E7;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--dark);
+      background: var(--white);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(13,122,111,.1);
+    }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23637370' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 480px) { .row { grid-template-columns: 1fr; } }
+
+    /* topic grid */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 4px;
+    }
+    @media (max-width: 400px) { .topic-grid { grid-template-columns: 1fr; } }
+
+    .topic-card {
+      border: 1.5px solid #D4E9E7;
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      user-select: none;
+    }
+    .topic-card:hover { border-color: var(--teal-lt); background: var(--teal-bg); }
+    .topic-card.selected { border-color: var(--teal); background: var(--teal-bg); box-shadow: 0 0 0 3px rgba(13,122,111,.1); }
+    .topic-card input[type=checkbox] { display:none; }
+    .topic-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+    .topic-text strong { font-size: 13px; font-weight: 700; display: block; color: var(--dark); }
+    .topic-text span   { font-size: 11px; color: var(--gray); line-height: 1.4; }
+    .topic-check {
+      width: 18px; height: 18px;
+      border-radius: 5px;
+      border: 1.5px solid #D4E9E7;
+      flex-shrink: 0;
+      margin-left: auto;
+      display: grid; place-items: center;
+      transition: all .2s;
+    }
+    .topic-card.selected .topic-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+    .topic-card.selected .topic-check::after {
+      content: '✓';
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* privacy note */
+    .privacy-note {
+      display: flex;
+      gap: 10px;
+      background: var(--gold-lt);
+      border: 1px solid rgba(245,166,35,.3);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 20px;
+    }
+    .privacy-note .ico { font-size: 18px; flex-shrink: 0; }
+    .privacy-note p { font-size: 12px; color: #7A5A00; line-height: 1.6; }
+    .privacy-note strong { font-weight: 700; }
+
+    /* consent */
+    .consent-wrap {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 14px;
+      border: 1.5px solid #D4E9E7;
+      border-radius: var(--radius);
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .consent-wrap:hover { border-color: var(--teal-lt); }
+    .consent-wrap input { accent-color: var(--teal); width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+    .consent-wrap span { font-size: 12px; color: var(--gray); line-height: 1.6; }
+
+    /* ── BUTTONS ── */
+    .btn-row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px; }
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #D4E9E7;
+      color: var(--mid);
+    }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(13,122,111,.25);
+    }
+    .btn-primary:hover { background: var(--mid); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    /* ── ERROR MSG ── */
+    .err-msg {
+      font-size: 11px;
+      color: var(--err);
+      margin-top: 4px;
+      display: none;
+    }
+    .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--err); }
+    .field.invalid .err-msg { display: block; }
+
+    /* ── SUCCESS ── */
+    .success-screen {
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+    .success-anim {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-lt));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 20px;
+      animation: pop .5s cubic-bezier(.175,.885,.32,1.275);
+    }
+    @keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
+    .success-screen h3 { font-family:'Fraunces',serif; font-size: 24px; color: var(--dark); margin-bottom: 10px; }
+    .success-screen p  { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 380px; margin: 0 auto 24px; }
+
+    .summary-box {
+      background: var(--teal-bg);
+      border: 1px solid rgba(13,122,111,.15);
+      border-radius: var(--radius);
+      padding: 18px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .summary-box h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--teal); margin-bottom: 12px; }
+    .summary-row { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+    .summary-row .lbl { color: var(--gray); min-width: 110px; font-weight: 500; }
+    .summary-row .val { color: var(--dark); font-weight: 600; }
+
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      padding: 13px 26px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 4px 14px rgba(37,211,102,.3);
+      transition: all .2s;
+    }
+    .wa-btn:hover { background: #1FB856; transform: translateY(-1px); }
+    .wa-btn svg { width: 20px; height: 20px; }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: var(--gray);
+      border-top: 1px solid rgba(13,122,111,.08);
+      margin-top: 8px;
+    }
+    .footer strong { color: var(--teal); }
+
+    /* ── INFO PANEL ── */
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+    @media (max-width: 520px) { .info-cards { grid-template-columns: 1fr; } }
+    .info-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(13,122,111,.07);
+    }
+    .info-card .ic { font-size: 28px; margin-bottom: 8px; }
+    .info-card strong { font-size: 13px; display: block; color: var(--dark); font-weight: 700; }
+    .info-card span   { font-size: 11px; color: var(--gray); line-height: 1.4; display: block; margin-top: 3px; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span></span> Layanan Aktif</div>
+  <h1>Konseling Online<br><em>Forum Genre Sinjai</em></h1>
+  <p>Layanan konseling gratis, aman, dan rahasia untuk remaja Kabupaten Sinjai. Ceritakan masalahmu, kami siap mendengar.</p>
+  <div class="hero-chips">
+    <div class="chip">🔒 Rahasia & Aman</div>
+    <div class="chip">💬 Gratis</div>
+    <div class="chip">👤 Konselor Terlatih</div>
+    <div class="chip">📱 Via WhatsApp</div>
+  </div>
+</section>
+
+<div class="wave">
+  <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z" fill="#F2FAF9"/>
+  </svg>
+</div>
+
+<!-- CONTAINER -->
+<div class="container">
+
+  <!-- Info Cards -->
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="ic">🧠</div>
+      <strong>Kesehatan Mental</strong>
+      <span>Stres, cemas, tekanan akademik</span>
+    </div>
+    <div class="info-card">
+      <div class="ic">❤️</div>
+      <strong>Hubungan & Sosial</strong>
+      <span>Keluarga, pertemanan, pacaran</span>
+    </div>
+    <div class="info-card">
+      <div class="ic">🌱</div>
+      <strong>Pengembangan Diri</strong>
+      <span>Karir, motivasi, masa depan</span>
+    </div>
+  </div>
+
+  <!-- CARD -->
+  <div class="card" style="margin-top:24px;">
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <div>
+        <h2>Form Pengajuan Sesi Konseling</h2>
+        <p>Generasi Berencana (Genre) – Kab. Sinjai</p>
+      </div>
+    </div>
+
+    <div class="card-body">
+
+      <!-- Steps -->
+      <div class="steps">
+        <div class="step active" id="s1"><div class="step-dot">1</div><div class="step-label">Identitas</div></div>
+        <div class="step" id="s2"><div class="step-dot">2</div><div class="step-label">Topik</div></div>
+        <div class="step" id="s3"><div class="step-dot">3</div><div class="step-label">Jadwal</div></div>
+        <div class="step" id="s4"><div class="step-dot">✓</div><div class="step-label">Selesai</div></div>
+      </div>
+
+      <!-- SECTION 1: Identitas -->
+      <div class="section visible" id="sec1">
+        <div class="row">
+          <div class="field" id="f-nama">
+            <label>Nama Lengkap <span>*</span></label>
+            <input type="text" id="nama" placeholder="Masukkan nama lengkap" />
+            <div class="err-msg">Nama wajib diisi.</div>
+          </div>
+          <div class="field" id="f-usia">
+            <label>Usia <span>*</span></label>
+            <input type="number" id="usia" placeholder="Contoh: 16" min="10" max="30" />
+            <div class="err-msg">Usia wajib diisi (10–30 tahun).</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field" id="f-jk">
+            <label>Jenis Kelamin <span>*</span></label>
+            <select id="jk">
+              <option value="">— Pilih —</option>
+              <option value="Laki-laki">Laki-laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
+            <div class="err-msg">Pilih jenis kelamin.</div>
+          </div>
+          <div class="field">
+            <label>Asal Sekolah / Instansi</label>
+            <input type="text" id="sekolah" placeholder="Opsional" />
+          </div>
+        </div>
+        <div class="field" id="f-hp">
+          <label>Nomor WhatsApp <span>*</span></label>
+          <input type="tel" id="hp" placeholder="Contoh: 08xxxxxxxxxx" />
+          <div class="err-msg">Nomor WhatsApp wajib diisi.</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="goStep(2)">Lanjut →</button>
+        </div>
+      </div>
+
+      <!-- SECTION 2: Topik -->
+      <div class="section" id="sec2">
+        <div class="field" id="f-topik">
+          <label>Pilih Topik Konseling <span>*</span> <span style="color:var(--gray);font-weight:400">(bisa lebih dari 1)</span></label>
+          <div class="topic-grid" id="topicGrid">
+            <div class="topic-card" onclick="toggleTopic(this,'Kesehatan Mental')">
+              <input type="checkbox" value="Kesehatan Mental">
+              <div class="topic-icon">🧠</div>
+              <div class="topic-text"><strong>Kesehatan Mental</strong><span>Stres, kecemasan, depresi</span></div>
+              <div class="topic-check"></div>
+            </div>
+            <div class="topic-card" onclick="toggleTopic(this,'Hubungan Percintaan')">
+              <input type="checkbox" value="Hubungan Percintaan">
+              <div class="topic-icon">💘</div>
+              <div class="topic-text"><strong>Hubungan Percintaan</strong><span>Pacaran, putus, patah hati</span></div>
+              <div class="topic-check"></div>
+            </div>
+            <div class="topic-card" onclick="toggleTopic(this,'Keluarga')">
+              <input type="checkbox" value="Keluarga">
+              <div class="topic-icon">👨‍👩‍👧</div>
+              <div class="topic-text"><strong>Keluarga</strong><span>Konflik, komunikasi keluarga</span></div>
+              <div class="topic-check"></div>
+            </div>
+            <div class="topic-card" onclick="toggleTopic(this,'Pergaulan & Sosial')">
+              <input type="checkbox" value="Pergaulan & Sosial">
+              <div class="topic-icon">🤝</div>
+              <div class="topic-text"><strong>Pergaulan & Sosial</strong><span>Pertemanan, bullying, isolasi</span></div>
+              <div class="topic-check"></div>
+            </div>
+            <div class="topic-card" onclick="toggleTopic(this,'Akademik & Karir')">
+              <input type="checkbox" value="Akademik & Karir">
+              <div class="topic-icon">🎓</div>
+              <div class="topic-text"><strong>Akademik & Karir</strong><span>Nilai, motivasi, masa depan</span></div>
+              <div class="topic-check"></div>
+            </div>
+            <div class="topic-card" onclick="toggleTopic(this,'Kesehatan Reproduksi')">
+              <input type="checkbox" value="Kesehatan Reproduksi">
+              <div class="topic-icon">🌿</div>
+              <div class="topic-text"><strong>Kesehatan Reproduksi</strong><span>Informasi TRIAD KRR</span></div>
+              <div class="topic-check"></div>
+            </div>
+            <div class="topic-card" onclick="toggleTopic(this,'Narkoba & Perilaku')">
+              <input type="checkbox" value="Narkoba & Perilaku">
+              <div class="topic-icon">🚫</div>
+              <div class="topic-text"><strong>Narkoba & Perilaku</strong><span>Rokok, zat terlarang</span></div>
+              <div class="topic-check"></div>
+            </div>
+            <div class="topic-card" onclick="toggleTopic(this,'Lainnya')">
+              <input type="checkbox" value="Lainnya">
+              <div class="topic-icon">💬</div>
+              <div class="t
