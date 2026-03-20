@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konseling Online - Forum GenRe Kab. Sinjai</title>
-    <!-- Tailwind CSS -->
+    <title>Konseling Sebaya - GenRe Kab. Sinjai</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -19,9 +16,9 @@
                     },
                     colors: {
                         genre: {
-                            blue: '#0056A4',
-                            yellow: '#FDB913',
-                            light: '#EBF4FF'
+                            blue: '#1E40AF', // Deep blue
+                            light: '#DBEAFE', // Light blue
+                            yellow: '#F59E0B', // Amber/Yellow
                         }
                     }
                 }
@@ -29,270 +26,235 @@
         }
     </script>
     <style>
-        /* Custom scrollbar for better look */
-        ::-webkit-scrollbar {
-            width: 8px;
+        body {
+            background-color: #F8FAFC;
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
-        }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-genre-yellow selection:text-genre-blue">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass-effect border-b border-slate-200 shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-genre-blue text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md">
-                        <i class="ph ph-users-three"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-bold text-genre-blue leading-tight text-lg">GenRe Sinjai</h1>
-                        <p class="text-xs text-slate-500 font-medium">Layanan Konseling Sebaya</p>
-                    </div>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-genre-blue text-white p-2 rounded-full">
+                    <i data-lucide="users" class="w-5 h-5"></i>
                 </div>
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="#beranda" class="text-slate-600 hover:text-genre-blue font-medium transition">Beranda</a>
-                    <a href="#form-konseling" class="text-slate-600 hover:text-genre-blue font-medium transition">Daftar Konseling</a>
-                    <a href="https://wa.me/6287775325445" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full font-medium transition flex items-center gap-2 shadow-md">
-                        <i class="ph ph-whatsapp-logo text-xl"></i> Chat Admin
-                    </a>
+                <div>
+                    <h1 class="font-bold text-lg text-genre-blue leading-tight">PIK-R / GenRe</h1>
+                    <p class="text-xs text-slate-500 font-medium">Kabupaten Sinjai</p>
                 </div>
             </div>
+            <a href="#form-konseling" class="text-sm font-semibold bg-genre-yellow text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors">
+                Daftar Konseling
+            </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="beranda" class="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-br from-genre-blue to-blue-800 text-white relative overflow-hidden">
-        <!-- Decorative blobs -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white opacity-10 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-genre-yellow opacity-20 blur-3xl"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6 text-center md:text-left">
-                    <span class="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-sm font-semibold backdrop-blur-sm border border-white/30">
-                        ✨ Ruang Aman & Rahasia
-                    </span>
-                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">
-                        Jangan Pendam Sendiri, <span class="text-genre-yellow">Kami Siap Mendengar.</span>
-                    </h2>
-                    <p class="text-lg text-blue-100 max-w-lg mx-auto md:mx-0">
-                        Punya masalah pendidikan, keluarga, persahabatan, atau asmara? Konselor sebaya Forum GenRe Kab. Sinjai siap membantu kamu merencanakan masa depan yang lebih baik.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-                        <a href="#form-konseling" class="bg-genre-yellow hover:bg-yellow-400 text-slate-900 px-6 py-3 rounded-full font-semibold text-lg transition shadow-lg flex items-center justify-center gap-2">
-                            Mulai Sesi Konseling <i class="ph ph-arrow-right font-bold"></i>
-                        </a>
+    <header class="bg-genre-blue hero-pattern text-white pt-12 pb-20 px-4 text-center rounded-b-[2.5rem] shadow-lg">
+        <div class="max-w-2xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                <i data-lucide="heart-handshake" class="w-4 h-4 text-genre-yellow"></i>
+                <span>Ruang Aman & Rahasia Terjamin</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                Jangan Pendam Sendiri,<br>Kami Siap Mendengar.
+            </h2>
+            <p class="text-blue-100 text-sm md:text-base mb-8 max-w-xl mx-auto">
+                Layanan konseling sebaya gratis untuk remaja Kabupaten Sinjai. Ceritakan masalahmu seputar pendidikan, keluarga, asmara, atau kesehatan mental bersama konselor GenRe yang ramah dan suportif.
+            </p>
+            
+            <div class="flex justify-center gap-4 text-sm font-medium">
+                <div class="flex flex-col items-center">
+                    <div class="bg-white text-genre-blue w-12 h-12 rounded-full flex items-center justify-center mb-2 shadow-md">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
                     </div>
+                    <span>Via Chat</span>
                 </div>
-                <div class="hidden md:block">
-                    <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20 shadow-2xl">
-                        <div class="flex items-start gap-4 mb-6">
-                            <div class="w-12 h-12 rounded-full bg-green-400 flex items-center justify-center text-white text-2xl flex-shrink-0">
-                                <i class="ph ph-shield-check"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-xl">100% Rahasia Terjamin</h3>
-                                <p class="text-blue-100 text-sm mt-1">Setiap cerita dan identitas yang kamu bagikan akan dijaga kerahasiaannya oleh konselor kami.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-genre-yellow flex items-center justify-center text-slate-800 text-2xl flex-shrink-0">
-                                <i class="ph ph-chats-circle"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-xl">Konselor Sebaya Mengerti Kamu</h3>
-                                <p class="text-blue-100 text-sm mt-1">Bercerita lebih nyaman karena kamu akan ditemani oleh konselor sebaya (remaja) yang terlatih.</p>
-                            </div>
-                        </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-white text-genre-blue w-12 h-12 rounded-full flex items-center justify-center mb-2 shadow-md">
+                        <i data-lucide="phone-call" class="w-6 h-6"></i>
                     </div>
+                    <span>Via Telepon</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-white text-genre-blue w-12 h-12 rounded-full flex items-center justify-center mb-2 shadow-md">
+                        <i data-lucide="video" class="w-6 h-6"></i>
+                    </div>
+                    <span>Via V-Call</span>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Form Section -->
-    <section id="form-konseling" class="py-16 md:py-24 bg-slate-50">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-slate-800 mb-4">Form Pengajuan Konseling</h2>
-                <p class="text-slate-600">Isi data diri di bawah ini. Anda bisa menggunakan nama samaran jika merasa lebih nyaman.</p>
+    <!-- Main Form Section -->
+    <main class="flex-grow max-w-2xl mx-auto w-full px-4 -mt-8 relative z-10 pb-16">
+        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8" id="form-konseling">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-slate-800">Form Pengajuan Konseling</h3>
+                <p class="text-sm text-slate-500 mt-1">Isi data di bawah ini untuk mengatur jadwal sesimu. Kamu boleh menggunakan nama samaran.</p>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-slate-100">
-                <form id="counselingForm" class="space-y-6">
-                    
-                    <!-- Nama -->
+            <form id="counselingForm" onsubmit="processBooking(event)" class="space-y-5">
+                
+                <!-- Nama -->
+                <div>
+                    <label for="nama" class="block text-sm font-semibold text-slate-700 mb-1">Nama Lengkap / Inisial / Samaran <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-lucide="user" class="h-5 w-5 text-slate-400"></i>
+                        </div>
+                        <input type="text" id="nama" required placeholder="Contoh: Budi atau 'Mawar'" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition-all">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Umur -->
                     <div>
-                        <label for="nama" class="block text-sm font-medium text-slate-700 mb-1">Nama / Nama Samaran <span class="text-red-500">*</span></label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                                <i class="ph ph-user"></i>
-                            </div>
-                            <input type="text" id="nama" required class="pl-10 w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition" placeholder="Tuliskan nama Anda">
-                        </div>
+                        <label for="umur" class="block text-sm font-semibold text-slate-700 mb-1">Umur <span class="text-red-500">*</span></label>
+                        <input type="number" id="umur" required placeholder="Cth: 18" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition-all">
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Usia -->
-                        <div>
-                            <label for="usia" class="block text-sm font-medium text-slate-700 mb-1">Usia <span class="text-red-500">*</span></label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                                    <i class="ph ph-calendar-blank"></i>
-                                </div>
-                                <input type="number" id="usia" required min="10" max="30" class="pl-10 w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition" placeholder="Contoh: 18">
-                            </div>
-                        </div>
-
-                        <!-- Jenis Kelamin -->
-                        <div>
-                            <label for="gender" class="block text-sm font-medium text-slate-700 mb-1">Jenis Kelamin <span class="text-red-500">*</span></label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                                    <i class="ph ph-gender-intersex"></i>
-                                </div>
-                                <select id="gender" required class="pl-10 w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition appearance-none bg-white">
-                                    <option value="" disabled selected>Pilih jenis kelamin</option>
-                                    <option value="Laki-laki">Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
-                                    <i class="ph ph-caret-down"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Status/Pekerjaan -->
-                        <div>
-                            <label for="status" class="block text-sm font-medium text-slate-700 mb-1">Status <span class="text-red-500">*</span></label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                                    <i class="ph ph-student"></i>
-                                </div>
-                                <select id="status" required class="pl-10 w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition appearance-none bg-white">
-                                    <option value="" disabled selected>Pilih status saat ini</option>
-                                    <option value="Pelajar (SMP/SMA)">Pelajar (SMP/SMA)</option>
-                                    <option value="Mahasiswa">Mahasiswa</option>
-                                    <option value="Bekerja">Bekerja</option>
-                                    <option value="Belum Bekerja">Belum Bekerja</option>
-                                    <option value="Lainnya">Lainnya</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
-                                    <i class="ph ph-caret-down"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Topik Konseling -->
-                        <div>
-                            <label for="topik" class="block text-sm font-medium text-slate-700 mb-1">Topik Konseling <span class="text-red-500">*</span></label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                                    <i class="ph ph-list-magnifying-glass"></i>
-                                </div>
-                                <select id="topik" required class="pl-10 w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition appearance-none bg-white">
-                                    <option value="" disabled selected>Pilih topik bahasan</option>
-                                    <option value="Pendidikan & Karir">Pendidikan & Karir</option>
-                                    <option value="Keluarga & Lingkungan">Keluarga & Lingkungan</option>
-                                    <option value="Kesehatan Mental / Stres">Kesehatan Mental / Stres</option>
-                                    <option value="Percintaan & Pra-Nikah">Percintaan & Pra-Nikah</option>
-                                    <option value="Kesehatan Reproduksi">Kesehatan Reproduksi</option>
-                                    <option value="Lainnya (Curhat Bebas)">Lainnya (Curhat Bebas)</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
-                                    <i class="ph ph-caret-down"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Metode Konseling -->
+                    <!-- Jenis Kelamin -->
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Pilih Metode Konseling (Online) <span class="text-red-500">*</span></label>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <label class="cursor-pointer relative">
-                                <input type="radio" name="metode" value="Chat WhatsApp" class="peer sr-only" required>
-                                <div class="rounded-lg border border-slate-200 px-4 py-3 hover:bg-slate-50 peer-checked:border-genre-blue peer-checked:bg-genre-light peer-checked:ring-1 peer-checked:ring-genre-blue transition flex items-center gap-2">
-                                    <i class="ph ph-chat-text text-xl text-slate-500 peer-checked:text-genre-blue"></i>
-                                    <span class="text-sm font-medium text-slate-700">Chat WhatsApp</span>
-                                </div>
-                            </label>
-                            <label class="cursor-pointer relative">
-                                <input type="radio" name="metode" value="Voice Call" class="peer sr-only">
-                                <div class="rounded-lg border border-slate-200 px-4 py-3 hover:bg-slate-50 peer-checked:border-genre-blue peer-checked:bg-genre-light peer-checked:ring-1 peer-checked:ring-genre-blue transition flex items-center gap-2">
-                                    <i class="ph ph-phone-call text-xl text-slate-500 peer-checked:text-genre-blue"></i>
-                                    <span class="text-sm font-medium text-slate-700">Voice Call</span>
-                                </div>
-                            </label>
-                            <label class="cursor-pointer relative">
-                                <input type="radio" name="metode" value="Video Call" class="peer sr-only">
-                                <div class="rounded-lg border border-slate-200 px-4 py-3 hover:bg-slate-50 peer-checked:border-genre-blue peer-checked:bg-genre-light peer-checked:ring-1 peer-checked:ring-genre-blue transition flex items-center gap-2">
-                                    <i class="ph ph-video-camera text-xl text-slate-500 peer-checked:text-genre-blue"></i>
-                                    <span class="text-sm font-medium text-slate-700">Video Call</span>
-                                </div>
-                            </label>
-                        </div>
+                        <label for="gender" class="block text-sm font-semibold text-slate-700 mb-1">Jenis Kelamin <span class="text-red-500">*</span></label>
+                        <select id="gender" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition-all appearance-none">
+                            <option value="" disabled selected>Pilih...</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
                     </div>
+                </div>
 
-                    <!-- Jadwal -->
+                <!-- Topik -->
+                <div>
+                    <label for="topik" class="block text-sm font-semibold text-slate-700 mb-1">Kategori Masalah <span class="text-red-500">*</span></label>
+                    <select id="topik" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition-all">
+                        <option value="" disabled selected>Pilih kategori yang paling sesuai...</option>
+                        <option value="Pendidikan / Karir">Pendidikan / Karir</option>
+                        <option value="Keluarga">Keluarga</option>
+                        <option value="Pertemanan / Bullying">Pertemanan / Bullying</option>
+                        <option value="Asmara / Percintaan">Asmara / Percintaan</option>
+                        <option value="Kesehatan Mental / Stres">Kesehatan Mental / Stres</option>
+                        <option value="Kesehatan Reproduksi">Kesehatan Reproduksi (KRR)</option>
+                        <option value="Lainnya">Lainnya...</option>
+                    </select>
+                </div>
+
+                <!-- Metode & Jadwal -->
+                <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                        <label for="jadwal" class="block text-sm font-medium text-slate-700 mb-1">Rencana Jadwal Konseling <span class="text-red-500">*</span></label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                                <i class="ph ph-clock"></i>
-                            </div>
-                            <input type="datetime-local" id="jadwal" required class="pl-10 w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition bg-white">
-                        </div>
-                        <p class="text-xs text-slate-500 mt-1">Jadwal pasti akan disesuaikan kembali dengan ketersediaan konselor.</p>
+                        <label for="metode" class="block text-sm font-semibold text-slate-700 mb-1">Metode Konseling <span class="text-red-500">*</span></label>
+                        <select id="metode" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition-all">
+                            <option value="WhatsApp Chat">WhatsApp Chat</option>
+                            <option value="WhatsApp Voice Call">WhatsApp Voice Call</option>
+                            <option value="WhatsApp Video Call">WhatsApp Video Call</option>
+                            <option value="Google Meet / Zoom">Google Meet / Zoom</option>
+                        </select>
                     </div>
-
-                    <!-- Cerita Singkat -->
                     <div>
-                        <label for="cerita" class="block text-sm font-medium text-slate-700 mb-1">Ceritakan Singkat Masalahmu (Opsional)</label>
-                        <textarea id="cerita" rows="4" class="w-full rounded-lg border-slate-300 border p-4 focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition resize-none" placeholder="Tuliskan secara singkat apa yang sedang kamu rasakan atau pikirkan..."></textarea>
+                        <label for="tanggal" class="block text-sm font-semibold text-slate-700 mb-1">Rencana Tanggal <span class="text-red-500">*</span></label>
+                        <input type="date" id="tanggal" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition-all">
                     </div>
+                </div>
 
-                    <!-- Persetujuan -->
-                    <div class="flex items-start gap-3">
-                        <div class="flex items-center h-5">
-                            <input id="persetujuan" type="checkbox" required class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-genre-blue accent-genre-blue cursor-pointer">
-                        </div>
-                        <label for="persetujuan" class="text-sm text-slate-600 cursor-pointer">
-                            Saya bersedia mengikuti sesi konseling dengan jujur dan memahami bahwa kerahasiaan data saya akan dijaga oleh tim GenRe Sinjai.
-                        </label>
-                    </div>
+                <!-- Cerita Singkat -->
+                <div>
+                    <label for="cerita" class="block text-sm font-semibold text-slate-700 mb-1">Ceritakan sedikit tentang masalahmu (Opsional)</label>
+                    <textarea id="cerita" rows="3" placeholder="Boleh dikosongkan jika belum nyaman bercerita di sini..." class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-genre-blue focus:border-genre-blue outline-none transition-all resize-none"></textarea>
+                </div>
 
-                    <!-- Submit Button -->
-                    <button type="submit" class="w-full bg-genre-blue hover:bg-blue-800 text-white font-semibold py-3.5 rounded-xl transition shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2 group">
-                        <span>Kirim Permohonan Konseling</span>
-                        <i class="ph ph-paper-plane-right group-hover:translate-x-1 transition-transform"></i>
-                    </button>
-                    <p class="text-xs text-center text-slate-500 mt-3">
-                        <i class="ph ph-info mr-1"></i> Setelah klik kirim, Anda akan diarahkan ke WhatsApp admin GenRe Sinjai.
-                    </p>
-                </form>
-            </div>
+                <!-- Alert/Disclaimer -->
+                <div class="bg-blue-50 border-l-4 border-genre-blue p-4 rounded-r-lg flex gap-3 text-sm text-blue-800">
+                    <i data-lucide="shield-check" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+                    <p>Semua informasi yang kamu berikan akan dijaga kerahasiaannya oleh Konselor GenRe Kab. Sinjai sesuai dengan kode etik konseling.</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-genre-blue hover:bg-blue-800 text-white font-bold text-lg py-3.5 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all flex justify-center items-center gap-2 transform hover:-translate-y-0.5">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    Kirim Pengajuan ke WhatsApp
+                </button>
+
+            </form>
         </div>
-    </section>
+    </main>
 
-    <!-- Modal Loading/Success (Hidden by default) -->
-    <div id="modalOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 text-center shadow-2xl transform scale-95 transition-transform duration-300" id="modalBox">
-            <div class="w-20 h-20 bg-green-100 round
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h4 class="font-bold text-slate-800 mb-2">Forum GenRe Kabupaten Sinjai</h4>
+            <p class="text-slate-500 text-sm mb-4">Salam GenRe! Saatnya yang muda yang berencana.</p>
+            <div class="flex justify-center items-center gap-4 text-slate-400">
+                <a href="#" class="hover:text-genre-blue transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-genre-blue transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+            </div>
+            <p class="text-xs text-slate-400 mt-6">&copy; 2026 Forum GenRe Kab. Sinjai. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Script for handling the form submission and WhatsApp redirection -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Set minimum date to today for the date picker
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('tanggal').setAttribute('min', today);
+
+        function processBooking(event) {
+            event.preventDefault(); // Prevent standard form submission
+
+            // Get values from form
+            const nama = document.getElementById('nama').value.trim();
+            const umur = document.getElementById('umur').value;
+            const gender = document.getElementById('gender').value;
+            const topik = document.getElementById('topik').value;
+            const metode = document.getElementById('metode').value;
+            
+            // Format Date (Optional: to make it more readable like "15 Agustus 2024")
+            const rawDate = document.getElementById('tanggal').value;
+            const dateObj = new Date(rawDate);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const tanggalStr = dateObj.toLocaleDateString('id-ID', options);
+
+            const cerita = document.getElementById('cerita').value.trim();
+
+            // Destination WhatsApp Number (Admin/Counselor)
+            // Format must be standard international without + (e.g., 62877...)
+            const waNumber = "6287775325445"; 
+
+            // Construct the WhatsApp message
+            let waMessage = `*HALO KONSELOR GENRE SINJAI* 👋\n\n`;
+            waMessage += `Saya ingin mengajukan jadwal sesi konseling dengan detail sebagai berikut:\n\n`;
+            waMessage += `👤 *Nama/Inisial:* ${nama}\n`;
+            waMessage += `🎂 *Umur:* ${umur} Tahun\n`;
+            waMessage += `⚧ *Jenis Kelamin:* ${gender}\n`;
+            waMessage += `🔖 *Topik Konseling:* ${topik}\n`;
+            waMessage += `📱 *Metode:* ${metode}\n`;
+            waMessage += `🗓️ *Rencana Tanggal:* ${tanggalStr}\n`;
+            
+            if (cerita !== "") {
+                waMessage += `\n📝 *Sedikit Gambaran Masalah:*\n_${cerita}_\n`;
+            }
+
+            waMessage += `\nMohon informasi ketersediaan jadwalnya ya Kak. Terima kasih! 🙏`;
+
+            // Encode text for URL
+            const encodedMessage = encodeURIComponent(waMessage);
+            
+            // Create WhatsApp API URL
+            const waLink = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+
+            // Open in new tab/app
+            window.open(waLink, '_blank');
+        }
+    </script>
+</body>
+</html>
+
+                                                                                             
